@@ -40,7 +40,7 @@ const wa = waLink('Hola IL FORNO, quiero pedir pizza para esta noche');
       <div>
         <a href="#inicio" class="flex items-center gap-3 group focus-visible:outline-2 focus-visible:outline-fire-orange rounded-lg" aria-label="IL FORNO Pizzería, volver al inicio">
           <img
-            src="/logo-ilforno.webp"
+            src={`${import.meta.env.BASE_URL.replace(/\/$/, "")}/logo-ilforno.webp`}
             alt="Logo Horno a Leña IL FORNO"
             width="56"
             height="43"
