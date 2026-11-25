@@ -198,7 +198,7 @@ const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(busines
 
         <div class="relative z-10">
           <!-- Cabecera de la card -->
-          <div class="flex items-center justify-between">
+          <div class="flex flex-wrap items-center justify-between gap-2">
             <span class="text-xs font-bold uppercase tracking-wider text-fire-red">Mapa y Orientación</span>
             <span class="text-xs font-semibold text-[#8F5B1E] bg-[#FEF3C7] border border-[#FDE68A] px-3 py-1 rounded-full">
               San Luis 601 esq. Lavalle
@@ -244,12 +244,12 @@ const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(busines
         </div>
 
         <!-- Botones de acción en Google Maps -->
-        <div class="relative z-10 mt-6 pt-5 border-t border-[#E8E3DB] flex flex-wrap sm:flex-nowrap gap-3">
+        <div class="relative z-10 mt-6 pt-5 border-t border-[#E8E3DB] flex flex-col sm:flex-row gap-3">
           <a
             href={business.mapsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            class="flex-1 inline-flex h-[50px] items-center justify-center rounded-full bg-fire-red text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-md shadow-fire-red/20 transition-all hover:bg-[#8F1D1D] hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-fire-red"
+            class="w-full sm:flex-1 inline-flex min-h-[50px] px-6 text-center items-center justify-center rounded-full bg-fire-red text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-md shadow-fire-red/20 transition-all hover:bg-[#8F1D1D] hover:shadow-lg hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-fire-red"
           >
             Ver en Google Maps
           </a>
@@ -257,7 +257,7 @@ const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(busines
             href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(business.address.street + ', ' + business.address.locality)}`}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex h-[50px] px-6 items-center justify-center rounded-full border-2 border-[#D8D2C8] bg-white text-xs sm:text-sm font-bold uppercase tracking-wider text-[#161412] hover:border-fire-red hover:text-fire-red hover:scale-[1.02] active:scale-[0.98] transition-all"
+            class="w-full sm:w-auto inline-flex min-h-[50px] px-6 text-center items-center justify-center rounded-full border-2 border-[#D8D2C8] bg-white text-xs sm:text-sm font-bold uppercase tracking-wider text-[#161412] hover:border-fire-red hover:text-fire-red hover:scale-[1.02] active:scale-[0.98] transition-all"
           >
             Cómo llegar (GPS)
           </a>
