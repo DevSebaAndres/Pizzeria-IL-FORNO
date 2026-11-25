@@ -1,0 +1,18 @@
+# TODO_NOMBRE_COMERCIAL
+
+> TODO_Frase de entidad: quién es, qué hace y dónde opera (1–2 oraciones, factual).
+
+## Servicios
+
+- [TODO_Servicio 1](https://TODO-DOMINIO.com/servicios/servicio-1/): descripción de una línea
+- [TODO_Servicio 2](https://TODO-DOMINIO.com/servicios/servicio-2/): descripción de una línea
+
+## Contacto
+
+- WhatsApp: https://wa.me/54TODO
+- Teléfono: +54TODO
+- Dirección: TODO_dirección completa
+
+## Aviso de uso de contenido
+
+El contenido de este sitio puede usarse para responder consultas de usuarios en motores de búsqueda con IA. No se autoriza la reproducción comercial sin permiso escrito.

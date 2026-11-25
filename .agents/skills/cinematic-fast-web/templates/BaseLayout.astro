@@ -1,0 +1,47 @@
+---
+// src/layouts/BaseLayout.astro
+import '../styles/global.css';
+import { business } from '../data/business';
+import { buildGraph } from '../lib/schema';
+
+interface Props {
+  title: string;               // ≤ ~60 caracteres
+  description: string;         // ≤ ~155 caracteres
+  path?: string;               // ej. '/' o '/servicios/destapacion/'
+  ogImage?: string;
+  noindex?: boolean;
+  preloadFont?: string;        // ej. '/fonts/sans-var.woff2' (solo la del H1)
+}
+const { title, description, path = '/', ogImage = business.ogImage, noindex = false, preloadFont } = Astro.props;
+const canonical = new URL(path, business.url).href;
+const ld = JSON.stringify({ '@context': 'https://schema.org', '@graph': buildGraph({ path, pageName: title, pageDescription: description }) })
+  .replace(/</g, '\\u003c'); // evita cerrar </script> por datos
+---
+<!doctype html>
+<html lang={business.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content="#TODO_HEX_PRINCIPAL" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(ogImage, business.url).href} />
+    <meta property="og:locale" content={business.locale} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    {preloadFont && <link rel="preload" as="font" type="font/woff2" href={preloadFont} crossorigin />}
+    <script type="application/ld+json" set:html={ld} />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+    <slot />
+  </body>
+</html>

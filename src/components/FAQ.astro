@@ -1,0 +1,58 @@
+---
+// src/components/FAQ.astro — Paso 9 del arco narrativo (FAQ semántica 1:1 con JSON-LD)
+import { faqs } from '../data/business';
+const { heading = 'Preguntas Frecuentes', asHeading = true } = Astro.props;
+---
+<section id="faq" aria-labelledby="faq-heading" class="relative bg-[#F2EEE9] py-20 lg:py-28 text-[#161412] border-t border-[#E2DDD5]">
+  <div class="mx-auto max-w-[960px] px-6 lg:px-12">
+    <div class="text-center max-w-2xl mx-auto">
+      <p class="font-sans text-xs font-bold uppercase tracking-[0.25em] text-fire-red">
+        Respuestas directas
+      </p>
+      <h2 id="faq-heading" class="font-display text-3xl sm:text-4xl lg:text-5xl uppercase tracking-wide text-[#161412] mt-2">
+        {heading}
+      </h2>
+      <p class="mt-4 text-base sm:text-lg text-[#5C554E]">
+        Información clara sobre nuestros productos, combos, ubicación y métodos de pedido en San Miguel de Tucumán.
+      </p>
+    </div>
+
+    <!-- Lista de preguntas frecuentes con paridad 1:1 estricta y estilo sobre papel -->
+    <div class="mt-12 space-y-4">
+      {faqs.map((f) => (
+        <details name="faq" class="group rounded-2xl bg-white border border-[#E2DDD5] p-6 transition-all hover:border-fire-red/40 hover:shadow-md open:border-fire-red/60 open:shadow-lg shadow-sm">
+          <summary class="cursor-pointer list-none font-sans font-bold text-lg sm:text-xl text-[#161412] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-fire-red">
+            {asHeading ? <h3 class="inline font-sans font-bold text-lg sm:text-xl text-[#161412]">{f.q}</h3> : f.q}
+          </summary>
+          <p class="mt-4 text-base leading-relaxed text-[#5C554E]">{f.a}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+  details summary {
+    position: relative;
+    padding-right: 2rem;
+  }
+  details summary::after {
+    content: '+';
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-fire-red, #b3261e);
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1;
+    transition: transform 0.2s ease;
+  }
+  details[open] summary::after {
+    content: '−';
+    transform: translateY(-50%);
+  }
+</style>

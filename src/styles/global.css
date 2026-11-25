@@ -1,0 +1,40 @@
+@import 'tailwindcss';
+@import '@fontsource/oleo-script/400.css';
+@import '@fontsource/montserrat/400.css';
+@import '@fontsource/montserrat/600.css';
+
+/*
+  Tokens IL FORNO (reemplazan la paleta Pizzalicious).
+  Mapeo Figma → IL FORNO:
+    #B72A23 (rojo)     → fire-red   (acento / bandas)
+    #D63920 (rojo CTA) → fire-orange (botones)
+    #F4DCAE (crema)    → ember      (detalles claros)
+    #F8F7F2 (fondo)    → coal       (fondo carbón)
+    #2D2D2D (texto)    → ash        (texto secundario sobre carbón)
+    #FFFFFF            → cream      (texto principal)
+*/
+@theme {
+  --color-coal: #141110;
+  --color-coal-2: #1d1816;
+  --color-coal-3: #2a221f;
+  --color-fire-red: #b3261e;
+  --color-fire-orange: #f26a1b;
+  --color-ember: #f4dcae;
+  --color-cream: #fbf3e6;
+  --color-ash: #b9aca0;
+
+  --color-paper: #F2EEE9;
+  --color-paper-card: #FFFFFF;
+  --color-paper-border: #E2DDD5;
+  --color-ink: #161412;
+  --color-ink-muted: #5C554E;
+
+  --font-display: 'Oleo Script', cursive;
+  --font-sans: 'Montserrat', system-ui, sans-serif;
+
+  --radius-pill: 80px;
+  --radius-btn: 50px;
+}
+
+html { background: var(--color-coal); color: var(--color-cream); font-family: var(--font-sans); }
+

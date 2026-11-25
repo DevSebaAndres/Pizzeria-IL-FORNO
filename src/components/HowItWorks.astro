@@ -1,0 +1,79 @@
+---
+// src/components/HowItWorks.astro — Paso 7 del arco narrativo (Protocolo de 3 pasos en <ol>)
+import { business, waLink } from '../data/business';
+const wa = waLink('Hola IL FORNO, quiero coordinar un pedido');
+---
+<section id="como-funciona" aria-labelledby="pasos-heading" class="relative bg-[#F2EEE9] py-20 lg:py-28 text-[#161412] border-t border-[#E2DDD5]">
+  <div class="mx-auto max-w-[1280px] px-6 lg:px-12">
+    <div class="text-center max-w-2xl mx-auto">
+      <p class="font-sans text-xs font-bold uppercase tracking-[0.25em] text-fire-red">
+        Rápido, claro y sin demoras
+      </p>
+      <h2 id="pasos-heading" class="font-display text-3xl sm:text-4xl lg:text-5xl uppercase tracking-wide text-[#161412] mt-2">
+        Cómo Funciona Tu Pedido
+      </h2>
+      <p class="mt-4 text-base sm:text-lg text-[#5C554E]">
+        En solo tres pasos tenés tu pizza recién salida del horno o lista para tu casa.
+      </p>
+    </div>
+
+    <!-- Lista numerada semántica <ol> con cards estilizadas en blanco sobre #F2EEE9 -->
+    <ol class="mt-14 grid grid-cols-1 md:grid-cols-3 gap-8 relative">
+      <!-- Paso 1 -->
+      <li class="relative rounded-3xl bg-white border border-[#E2DDD5] p-8 flex flex-col justify-between hover:border-fire-red/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 shadow-md">
+        <div>
+          <span class="font-display text-5xl font-bold text-fire-red/25" aria-hidden="true">01</span>
+          <h3 class="font-display text-2xl uppercase text-[#161412] mt-4">Elegí tu combo o promo</h3>
+          <p class="text-sm sm:text-base text-[#5C554E] mt-3 leading-relaxed">
+            Revisá nuestra carta: elegí porciones o pizzas enteras recién salidas con gaseosa, o las opciones listas para hornear en casa con promo ahorro por tres unidades.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-[#E8E3DB] text-xs font-semibold uppercase tracking-wider text-fire-red">
+          Variedad y conveniencia
+        </div>
+      </li>
+
+      <!-- Paso 2 -->
+      <li class="relative rounded-3xl bg-white border border-[#E2DDD5] p-8 flex flex-col justify-between hover:border-fire-red/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 shadow-md">
+        <div>
+          <span class="font-display text-5xl font-bold text-fire-red/25" aria-hidden="true">02</span>
+          <h3 class="font-display text-2xl uppercase text-[#161412] mt-4">Encargá por teléfono o WhatsApp</h3>
+          <p class="text-sm sm:text-base text-[#5C554E] mt-3 leading-relaxed">
+            Escribinos directamente al WhatsApp ({business.whatsappDisplay}) o llamanos al local ({business.phoneDisplay}). Tomamos tu pedido al instante sin aplicaciones intermedias.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-[#E8E3DB] text-xs font-semibold uppercase tracking-wider text-fire-red">
+          Contacto directo
+        </div>
+      </li>
+
+      <!-- Paso 3 -->
+      <li class="relative rounded-3xl bg-white border border-[#E2DDD5] p-8 flex flex-col justify-between hover:border-fire-red/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 shadow-md">
+        <div>
+          <span class="font-display text-5xl font-bold text-fire-red/25" aria-hidden="true">03</span>
+          <h3 class="font-display text-2xl uppercase text-[#161412] mt-4">Pasá a retirar por el local</h3>
+          <p class="text-sm sm:text-base text-[#5C554E] mt-3 leading-relaxed">
+            Acercate a {business.address.street}, San Miguel de Tucumán. Te entregamos tu pedido caliente o debidamente acondicionado para hornear con masa crujiente.
+          </p>
+        </div>
+        <div class="mt-6 pt-4 border-t border-[#E8E3DB] text-xs font-semibold uppercase tracking-wider text-fire-red">
+          San Luis 601 esq. Lavalle
+        </div>
+      </li>
+    </ol>
+
+    <!-- Callout de conversión -->
+    <div class="mt-14 rounded-3xl bg-gradient-to-r from-fire-red via-[#A31621] to-fire-red p-6 sm:p-10 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl text-white">
+      <div>
+        <p class="text-xs font-bold uppercase tracking-wider text-[#FDE68A]">¿Tenés hambre ahora mismo?</p>
+        <p class="text-lg sm:text-xl text-white font-semibold mt-1">Escribinos y te preparamos la orden para que no esperes ni un minuto.</p>
+      </div>
+      <a
+        href={wa}
+        class="inline-flex h-[52px] shrink-0 items-center justify-center rounded-full bg-white px-8 text-sm font-bold uppercase tracking-wider text-fire-red transition-all hover:bg-[#FDFBF7] hover:scale-105 active:scale-95 shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+      >
+        Pedir ahora
+      </a>
+    </div>
+  </div>
+</section>

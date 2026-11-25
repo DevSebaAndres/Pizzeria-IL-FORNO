@@ -1,0 +1,139 @@
+---
+// src/components/FrameSequence.astro — v2.0
+// Plantilla propia (no probada en navegador: validar visualmente en cada proyecto).
+//
+// Cumple las reglas de `references/frame-sequence.md` y `references/motion-a11y.md`:
+//   1. El primer frame se renderiza como `<img>` real con `fetchpriority="high"` y `loading="eager"` (es el LCP).
+//   2. El `<canvas>` se monta encima recién después de `window.load` cuando `frame-sequence.js` añade `.is-ready`.
+//   3. Los capítulos son HTML semántico indexable (`<ol>`).
+//   4. Incluye `.seq-stills` con 3–5 imágenes clave para `prefers-reduced-motion: reduce` o navegadores sin JS.
+
+interface Chapter {
+  id: string;
+  label?: string;
+  title: string;
+  body: string;
+  stillSrc: string;
+  stillAlt: string;
+}
+
+interface Props {
+  id: string;
+  headingId: string;
+  heading: string;
+  skipTarget?: string;         // ej. '#catalogo' para saltar una escena > 250svh con teclado
+  firstFrameSrc: string;       // ej. '/frames/v1/d-0001.avif'
+  firstFrameAlt: string;
+  width?: number;
+  height?: number;
+  base: string;                // ej. '/frames/v1/d-'
+  count: number;               // ej. 120 (≤ 240 desktop)
+  ext?: 'avif' | 'webp';
+  baseMobile?: string;         // ej. '/frames/v1/m-'
+  countMobile?: number;        // ej. 72 (≤ 120 mobile)
+  stride?: number;
+  windowSize?: number;
+  chapters: Chapter[];         // 3–5 capítulos con su imagen clave para modo sin movimiento
+}
+
+const {
+  id,
+  headingId,
+  heading,
+  skipTarget,
+  firstFrameSrc,
+  firstFrameAlt,
+  width = 1280,
+  height = 720,
+  base,
+  count,
+  ext = 'avif',
+  baseMobile,
+  countMobile,
+  stride = 4,
+  windowSize = 8,
+  chapters = [],
+} = Astro.props;
+---
+
+<section
+  id={id}
+  class="seq relative min-h-[260svh] md:min-h-[340svh]"
+  aria-labelledby={headingId}
+  data-frame-seq
+  data-base={base}
+  data-count={count}
+  data-ext={ext}
+  data-base-mobile={baseMobile}
+  data-count-mobile={countMobile}
+  data-stride={stride}
+  data-window={windowSize}
+>
+  {skipTarget && (
+    <a class="skip-link" href={skipTarget}>
+      Saltar escena animada e ir a la siguiente sección
+    </a>
+  )}
+
+  <!-- Escenario fijo (pin por CSS compositor, 0 JS para el anclaje) -->
+  <div class="seq-pin sticky top-0 h-[100svh] w-full overflow-clip">
+    <img
+      data-first-frame
+      src={firstFrameSrc}
+      alt={firstFrameAlt}
+      width={width}
+      height={height}
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+      class="h-full w-full object-cover"
+    />
+    <canvas
+      aria-hidden="true"
+      class="pointer-events-none absolute inset-0 h-full w-full"
+    ></canvas>
+    <slot name="hud" />
+  </div>
+
+  <!-- Narrativa indexable en el HTML inicial -->
+  <div class="seq-content relative z-10 mx-auto max-w-7xl px-6">
+    <h2 id={headingId} class="sr-only">{heading}</h2>
+    <ol class="seq-chapters space-y-[60svh] py-[25svh]">
+      {chapters.map((ch, idx) => (
+        <li id={ch.id} class="hud-plate max-w-md rounded-[var(--radius-card)] p-6 text-[var(--color-showroom-ink)]">
+          <p class="font-mono text-xs uppercase tracking-widest opacity-80">
+            {ch.label ?? `0${idx + 1} / 0${chapters.length}`}
+          </p>
+          <h3 class="mt-2 text-2xl font-bold uppercase">{ch.title}</h3>
+          <p class="mt-2 text-base leading-relaxed">{ch.body}</p>
+        </li>
+      ))}
+    </ol>
+
+    <!-- Alternativa obligatoria para prefers-reduced-motion: reduce o sin JS -->
+    <div class="seq-stills grid gap-8 py-12 md:grid-cols-2">
+      {chapters.map((ch) => (
+        <figure class="overflow-hidden rounded-[var(--radius-card)] border border-current/15">
+          <img
+            src={ch.stillSrc}
+            alt={ch.stillAlt}
+            width={width}
+            height={height}
+            loading="lazy"
+            decoding="async"
+            class="h-auto w-full object-cover"
+          />
+          <figcaption class="p-4 text-sm">
+            <strong>{ch.title}:</strong> {ch.body}
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  import { initFrameSequence } from '../scripts/frame-sequence.js';
+  document.querySelectorAll('[data-frame-seq]').forEach((el) => initFrameSequence(el));
+</script>
+

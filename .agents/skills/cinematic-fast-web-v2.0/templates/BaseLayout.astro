@@ -1,0 +1,78 @@
+---
+// src/layouts/BaseLayout.astro — v2.0
+import '../styles/global.css';
+import { business } from '../data/business';
+import { buildGraph } from '../lib/schema';
+
+interface HeroPreload {
+  href: string;          // imagen LCP (primer frame de la secuencia o imagen hero)
+  imagesrcset?: string;  // ej. '/hero-640.avif 640w, /hero-1280.avif 1280w'
+  imagesizes?: string;   // ej. '100vw'
+  type?: string;         // ej. 'image/avif'
+}
+
+interface Props {
+  title: string;               // ≤ ~60 caracteres
+  description: string;         // ≤ ~155 caracteres
+  path?: string;               // ej. '/' o '/modelos/ferrari-f40/'
+  ogImage?: string;
+  noindex?: boolean;
+  preloadFont?: string;        // solo la fuente del H1, ej. '/fonts/sans-var.woff2'
+  heroPreload?: HeroPreload;   // precarga del elemento LCP si es una imagen
+}
+const {
+  title, description, path = '/', ogImage = business.ogImage,
+  noindex = false, preloadFont, heroPreload,
+} = Astro.props;
+const canonical = new URL(path, business.url).href;
+const ld = JSON.stringify({ '@context': 'https://schema.org', '@graph': buildGraph({ path, pageName: title, pageDescription: description }) })
+  .replace(/</g, '\\u003c'); // evita cerrar </script> por datos
+---
+<!doctype html>
+<html lang={business.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--
+      js-motion: se añade SOLO si hay JS y el usuario no pidió reducir movimiento.
+      Todo estado inicial oculto (opacity:0, translate, etc.) debe vivir bajo `.js-motion`.
+      Sin esta clase el contenido se ve completo. Nunca ocultar el elemento LCP.
+    -->
+    <script is:inline>
+      if (!matchMedia('(prefers-reduced-motion: reduce)').matches) document.documentElement.classList.add('js-motion');
+    </script>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content="#TODO_HEX_PRINCIPAL" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(ogImage, business.url).href} />
+    <meta property="og:locale" content={business.locale} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    {preloadFont && <link rel="preload" as="font" type="font/woff2" href={preloadFont} crossorigin />}
+    {heroPreload && (
+      <link
+        rel="preload"
+        as="image"
+        href={heroPreload.href}
+        imagesrcset={heroPreload.imagesrcset}
+        imagesizes={heroPreload.imagesizes}
+        type={heroPreload.type}
+        fetchpriority="high"
+      />
+    )}
+    <script type="application/ld+json" set:html={ld} />
+    <slot name="head" />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+    <slot />
+  </body>
+</html>
+

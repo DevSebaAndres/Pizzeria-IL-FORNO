@@ -1,0 +1,37 @@
+---
+// src/pages/index.astro — IL FORNO Pizzería
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Hero from '../components/Hero.astro';
+import Manifesto from '../components/Manifesto.astro';
+import OrderBanner from '../components/OrderBanner.astro';
+import Menu from '../components/Menu.astro';
+import HowItWorks from '../components/HowItWorks.astro';
+import Differentials from '../components/Differentials.astro';
+import CoverageCta from '../components/CoverageCta.astro';
+import FAQ from '../components/FAQ.astro';
+import ContactLocation from '../components/ContactLocation.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppButton from '../components/WhatsAppButton.astro';
+import { seo } from '../data/business';
+---
+
+<BaseLayout
+  title={seo.title}
+  description={seo.description}
+  path="/"
+>
+  <Hero />
+
+  <main id="main" class="bg-[#F2EEE9] text-[#161412]">
+    <Manifesto />
+    <Menu />
+    <HowItWorks />
+    <Differentials />
+    <CoverageCta />
+    <FAQ />
+    <ContactLocation />
+  </main>
+
+  <Footer />
+  <WhatsAppButton />
+</BaseLayout>

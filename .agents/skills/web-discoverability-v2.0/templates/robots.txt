@@ -1,0 +1,31 @@
+# robots.txt — v2.0 (rastreo permitido para buscadores, recursos de scrollytelling y agentes de IA).
+# Nota: robots.txt controla rastreo, no indexación. No bloquear /_astro/ ni /frames/. Verificar también CDN/WAF.
+
+User-agent: *
+Allow: /
+
+# Búsqueda / citación
+User-agent: Googlebot
+User-agent: OAI-SearchBot
+User-agent: PerplexityBot
+User-agent: Claude-SearchBot
+User-agent: Applebot
+Allow: /
+
+# Agentes a pedido del usuario (al ser disparados por una persona, robots.txt puede no aplicarles)
+User-agent: ChatGPT-User
+User-agent: Perplexity-User
+User-agent: Claude-User
+Allow: /
+
+# Entrenamiento / tokens de control (decisión del dueño del sitio).
+# Por defecto permitidos. Para excluirse del entrenamiento sin perder ranking en Google ni citación en búsqueda,
+# cambiar Allow por Disallow únicamente en este grupo.
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+Allow: /
+
+Sitemap: https://TODO-DOMINIO.com/sitemap-index.xml
+

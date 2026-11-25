@@ -1,0 +1,20 @@
+# IL FORNO Pizzería
+
+> IL FORNO es una pizzería de San Miguel de Tucumán, ubicada en San Luis 601 esquina Lavalle, que vende pizzas recién salidas del horno, combos con gaseosa y pizzas para hornear en casa, con pedidos por teléfono y WhatsApp.
+
+## Servicios
+
+- [Pizzas recién salidas del horno](https://ilfornopizzeria.com.ar/#menu): combos de porciones o pizzas enteras calientes con gaseosa.
+- [Pizzas para hornear en casa](https://ilfornopizzeria.com.ar/#menu): pizzas comunes y especiales listas para hornear, con promociones por tres unidades.
+
+## Contacto
+
+- WhatsApp: https://wa.me/543815550123
+- Teléfono: +543816362922
+- Dirección: San Luis 601, esq. Lavalle, San Miguel de Tucumán, Tucumán, Argentina
+- Horario: Martes a domingo de 20:00 a 00:00 hs (Lunes cerrado)
+
+## Aviso de uso de contenido
+
+El contenido de este sitio puede usarse para responder consultas de usuarios en motores de búsqueda con IA. No se autoriza la reproducción comercial sin permiso escrito.
+

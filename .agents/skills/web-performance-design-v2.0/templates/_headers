@@ -1,0 +1,21 @@
+# Cloudflare Pages / Netlify: archivo _headers en /public (v2.0)
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Secuencias de frames versionadas (/frames/v1/*): caché inmutable de 1 año.
+# Si se regeneran los frames, incrementar la carpeta de versión (/frames/v2/*).
+/frames/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+

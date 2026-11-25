@@ -1,0 +1,80 @@
+/* src/styles/global.css — Tailwind v4, tokens de marca, fuentes autoalojadas, movimiento seguro */
+@import "tailwindcss";
+
+@theme {
+  /* 4 roles de marca (reemplazar con la paleta del usuario) */
+  --color-primary: #TODO;
+  --color-accent:  #TODO;
+  --color-bg:      #TODO;
+  --color-ink:     #TODO;
+
+  --font-sans:  "Sans Var", ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+  --font-serif: "Serif Italic", "Iowan Old Style", Georgia, serif;
+  --font-mono:  ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --radius-card:   2rem;
+  --radius-hero:   3rem;
+  --radius-footer: 4rem;
+}
+
+/* Fuentes autoalojadas: subset latin, WOFF2. Reemplazar rutas/pesos por los reales. */
+@font-face {
+  font-family: "Sans Var";
+  src: url("/fonts/sans-var-latin.woff2") format("woff2");
+  font-weight: 200 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Serif Italic";
+  src: url("/fonts/serif-italic-latin.woff2") format("woff2");
+  font-style: italic;
+  font-weight: 400 600;
+  font-display: swap;
+}
+/* Fallback con métricas ajustadas para evitar CLS en el swap (calcular valores con la herramienta de métricas de fuentes) */
+@font-face {
+  font-family: "Sans Var Fallback";
+  src: local("Arial");
+  size-adjust: 100%;          /* TODO ajustar */
+  ascent-override: 95%;       /* TODO ajustar */
+  descent-override: 25%;      /* TODO ajustar */
+  line-gap-override: 0%;
+}
+
+@layer base {
+  html { scrollbar-gutter: stable; -webkit-text-size-adjust: 100%; }
+  body { background: var(--color-bg); color: var(--color-ink); font-family: var(--font-sans), "Sans Var Fallback"; }
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+  :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+  .skip-link { position: absolute; left: 1rem; top: -4rem; background: var(--color-ink); color: var(--color-bg); padding: .75rem 1rem; z-index: 100; border-radius: 1rem; }
+  .skip-link:focus { top: 1rem; }
+}
+
+/* Textura de ruido: tile pre-renderizado (WebP ≤ 4 KB) en capa fija, sin feTurbulence */
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: .05;
+  background-image: url("/noise.webp"); background-size: 128px;
+}
+
+/* Movimiento: solo con preferencia normal. El contenido es visible sin soporte. */
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+
+  @keyframes fade-up { from { opacity: 0; transform: translateY(1.25rem); } to { opacity: 1; transform: none; } }
+  .fade-up { animation: fade-up .8s cubic-bezier(.22,1,.36,1) both; animation-delay: calc(var(--i, 0) * 120ms); }
+  /* NO usar .fade-up en el H1 ni en la imagen del hero (LCP) */
+
+  @keyframes pulse-dot { 0%,100% { transform: scale(1); opacity: 1; } 50% { transform: scale(1.6); opacity: .4; } }
+  .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+  @supports (animation-timeline: view()) {
+    @keyframes reveal { from { opacity: 0; transform: translateY(1.5rem); } to { opacity: 1; transform: none; } }
+    .reveal { animation: reveal linear both; animation-timeline: view(); animation-range: entry 0% entry 55%; }
+  }
+}
+
+.magnetic { position: relative; overflow: hidden; isolation: isolate; transition: transform .3s cubic-bezier(.22,1,.36,1); }
+.magnetic:hover { transform: scale(1.03); }
+.magnetic::before { content: ""; position: absolute; inset: 0; background: var(--color-accent); transform: translateY(100%); transition: transform .4s cubic-bezier(.22,1,.36,1); z-index: -1; }
+.magnetic:hover::before { transform: translateY(0); }

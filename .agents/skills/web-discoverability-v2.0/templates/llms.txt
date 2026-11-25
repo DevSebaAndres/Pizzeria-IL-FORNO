@@ -1,0 +1,23 @@
+# TODO_NOMBRE_COMERCIAL
+
+> TODO_Frase de entidad AEO (25–40 palabras): qué es la marca/negocio, qué ofrece y para quién (factual, sin superlativos).
+
+## Catálogo / Productos o Servicios principales
+
+- [TODO_Producto o Servicio 1](https://TODO-DOMINIO.com/modelos/modelo-1/): descripción factual y especificaciones reales
+- [TODO_Producto o Servicio 2](https://TODO-DOMINIO.com/modelos/modelo-2/): descripción factual y especificaciones reales
+
+## Modalidades
+
+- **TODO_Modalidad 1 (ej. El Lienzo):** descripción concisa y formato de entrega
+- **TODO_Modalidad 2 (ej. El Render):** descripción concisa y opciones de personalización
+
+## Contacto
+
+- Sitio oficial: https://TODO-DOMINIO.com/
+- Email: TODO@dominio.com
+
+## Aviso de uso de contenido
+
+El contenido público de este sitio puede utilizarse para responder consultas y citar la fuente en motores de búsqueda y asistentes con IA. No se autoriza la reproducción comercial de las obras o ilustraciones sin permiso escrito.
+

@@ -1,0 +1,118 @@
+---
+// src/components/Footer.astro — Paso 11 del arco narrativo (Cierre de conversión y Footer con NAP)
+import { business, waLink } from '../data/business';
+const wa = waLink('Hola IL FORNO, quiero pedir pizza para esta noche');
+---
+<footer class="relative bg-coal-2 text-cream border-t border-coal-3">
+  <!-- Bloque superior de cierre de conversión (Paso 11) -->
+  <div class="border-b border-coal-3 bg-gradient-to-b from-coal to-coal-2 py-16 lg:py-20">
+    <div class="mx-auto max-w-[1280px] px-6 lg:px-12 text-center">
+      <p class="font-sans text-xs font-bold uppercase tracking-[0.25em] text-fire-orange">
+        Horno encendido
+      </p>
+      <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl uppercase tracking-wide text-cream mt-3 max-w-2xl mx-auto">
+        Hoy Puede Ser Noche de Pizza
+      </h2>
+      <p class="mt-4 max-w-xl mx-auto text-base sm:text-lg text-ash leading-relaxed">
+        Pedí por WhatsApp o pasá por IL FORNO en San Luis 601, esquina Lavalle. Llevate la auténtica pizza recién salida del horno o las promos para hornear en casa.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-4">
+        <a
+          href={wa}
+          class="inline-flex h-[55px] items-center justify-center rounded-btn bg-fire-orange px-8 text-base font-semibold uppercase text-coal transition-all hover:bg-ember hover:shadow-lg hover:shadow-fire-orange/20 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-ember"
+        >
+          Pedir por WhatsApp
+        </a>
+        <a
+          href={business.phoneTel}
+          class="inline-flex h-[55px] items-center justify-center rounded-btn border border-ash/40 bg-coal/60 px-8 text-base font-semibold uppercase text-cream transition-colors hover:border-fire-orange hover:text-fire-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fire-orange"
+        >
+          Llamar al {business.phoneDisplay}
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navegación y datos del pie -->
+  <div class="mx-auto max-w-[1280px] px-6 lg:px-12 py-12 lg:py-16">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <!-- Identidad con Logo -->
+      <div>
+        <a href="#inicio" class="flex items-center gap-3 group focus-visible:outline-2 focus-visible:outline-fire-orange rounded-lg" aria-label="IL FORNO Pizzería, volver al inicio">
+          <img
+            src="/logo-ilforno.webp"
+            alt="Logo Horno a Leña IL FORNO"
+            width="56"
+            height="43"
+            class="h-12 w-auto object-contain transition-transform group-hover:scale-105"
+            loading="lazy"
+          />
+          <div class="flex flex-col">
+            <span class="font-display text-2xl uppercase text-ember tracking-wide group-hover:text-fire-orange transition-colors">
+              IL FORNO
+            </span>
+            <span class="font-sans text-[10px] uppercase tracking-[0.25em] text-ash leading-tight">
+              Pizzería
+            </span>
+          </div>
+        </a>
+        <p class="mt-4 text-sm text-ash leading-relaxed">
+          Pizzas recién salidas del horno y para hornear en casa en San Miguel de Tucumán. Elaboración artesanal con fuego vivo.
+        </p>
+      </div>
+
+      <!-- Enlaces rápidos -->
+      <div>
+        <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-fire-orange">Navegación</h3>
+        <ul class="mt-3 space-y-2 text-sm text-ash">
+          <li><a href="#inicio" class="hover:text-cream transition-colors">Inicio</a></li>
+          <li><a href="#sobre-nosotros" class="hover:text-cream transition-colors">Sobre Nosotros</a></li>
+          <li><a href="#menu" class="hover:text-cream transition-colors">Carta y Precios</a></li>
+          <li><a href="#como-funciona" class="hover:text-cream transition-colors">Cómo Funciona</a></li>
+          <li><a href="#diferenciales" class="hover:text-cream transition-colors">Por Qué Elegirnos</a></li>
+          <li><a href="#faq" class="hover:text-cream transition-colors">Preguntas Frecuentes</a></li>
+          <li><a href="#contacto" class="hover:text-cream transition-colors">Ubicación y Contacto</a></li>
+        </ul>
+      </div>
+
+      <!-- Contacto / NAP -->
+      <div>
+        <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-fire-orange">Contacto Directo</h3>
+        <ul class="mt-3 space-y-2 text-sm text-ash">
+          <li><span class="text-cream font-medium">Dirección:</span> {business.address.street}</li>
+          <li><span class="text-cream font-medium">Ciudad:</span> {business.address.locality}, {business.address.region}</li>
+          <li>
+            <span class="text-cream font-medium">Teléfono:</span>{' '}
+            <a href={business.phoneTel} class="hover:text-fire-orange transition-colors">{business.phoneDisplay}</a>
+          </li>
+          <li>
+            <span class="text-cream font-medium">WhatsApp:</span>{' '}
+            <a href={wa} class="hover:text-fire-orange transition-colors">{business.whatsappDisplay}</a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Horarios e Instagram -->
+      <div>
+        <h3 class="font-sans text-xs font-bold uppercase tracking-wider text-fire-orange">Horario & Redes</h3>
+        <ul class="mt-3 space-y-2 text-sm text-ash">
+          {business.hoursText.map((h) => (
+            <li><span class="text-cream font-medium">{h.days}:</span> {h.time}</li>
+          ))}
+          <li class="pt-2">
+            <span class="text-cream font-medium">Instagram:</span>{' '}
+            <a href={business.instagram.href} target="_blank" rel="noopener noreferrer" class="text-ember hover:text-fire-orange transition-colors">
+              {business.instagram.handle}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Barra inferior con copyright -->
+    <div class="mt-12 pt-8 border-t border-coal-3 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-ash">
+      <p>&copy; {new Date().getFullYear()} {business.name} Pizzería. Todos los derechos reservados. San Miguel de Tucumán, Argentina.</p>
+      <p class="text-ash/70">Diseño y desarrollo web optimizado para velocidad y buscadores con IA.</p>
+    </div>
+  </div>
+</footer>

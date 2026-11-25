@@ -1,0 +1,81 @@
+---
+// src/components/Manifesto.astro — Pasos 2 y 3 del arco narrativo (Problema y Solución)
+---
+<section id="sobre-nosotros" aria-labelledby="manifiesto-heading" class="relative bg-[#F2EEE9] py-20 lg:py-28 text-[#161412] overflow-hidden border-t border-[#E2DDD5]">
+  <div class="mx-auto max-w-[1280px] px-6 lg:px-12">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+      <!-- Columna izquierda: Manifiesto editorial -->
+      <div class="lg:col-span-7">
+        <p class="font-sans text-xs font-bold uppercase tracking-[0.25em] text-fire-red">
+          Tradición de horno en San Miguel de Tucumán
+        </p>
+        <h2 id="manifiesto-heading" class="font-display text-3xl sm:text-4xl lg:text-5xl uppercase tracking-wide text-[#161412] mt-2 leading-tight">
+          La auténtica pizza al fuego, <span class="text-fire-red">en el local o en tu casa</span>
+        </h2>
+
+        <div class="mt-6 space-y-4 text-base sm:text-lg leading-relaxed text-[#5C554E]">
+          <p>
+            Muchas veces conseguir una buena pizza significa elegir entre comer apurado o esperar repartos eternos que llegan tibios. En <strong class="text-[#161412] font-semibold">IL FORNO</strong> eliminamos esa complicación desde nuestra esquina de San Luis 601.
+          </p>
+          <p>
+            Preparamos pizzas recién salidas del horno para disfrutar en el momento, y también elaboramos pizzas especialmente acondicionadas para que las lleves y las hornees en tu propia cocina cuando vos decidas. El mismo fuego, la misma masa y la misma muzzarella dorada, a tu tiempo.
+          </p>
+        </div>
+
+        <div class="mt-8 flex flex-wrap gap-3.5 text-sm font-medium text-[#161412]">
+          <div class="flex items-center gap-2 rounded-xl bg-white border border-[#E2DDD5] px-4 py-2.5 shadow-sm">
+            <svg class="h-5 w-5 text-fire-red shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fill-rule="evenodd" d="M12.395 2.553a1 1 0 00-1.45-.385c-.345.23-.614.558-.822.88-.316.492-.593 1.05-.838 1.62-.486 1.134-.84 2.378-1.04 3.52-.08.455-.138.9-.176 1.32-.232-.224-.486-.43-.762-.609a3.86 3.86 0 00-1.85-.595 1 1 0 00-.916.55 3.99 3.99 0 00.323 4.296C6.15 14.636 7.82 16 10 16s3.85-1.364 4.966-2.85a3.99 3.99 0 00.323-4.296 1 1 0 00-.916-.55 3.86 3.86 0 00-1.85.595c-.276.18-.53.385-.762.61-.038-.42-.096-.866-.176-1.321-.2-1.143-.554-2.387-1.04-3.521a14.73 14.73 0 00-.838-1.62 3.14 3.14 0 00-.822-.88z" clip-rule="evenodd" />
+            </svg>
+            <span class="font-semibold">Horno a temperatura viva</span>
+          </div>
+          <div class="flex items-center gap-2 rounded-xl bg-white border border-[#E2DDD5] px-4 py-2.5 shadow-sm">
+            <svg class="h-5 w-5 text-fire-red shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd" />
+            </svg>
+            <span class="font-semibold">Masa fresca con fermentación cuidada</span>
+          </div>
+          <div class="flex items-center gap-2 rounded-xl bg-white border border-[#E2DDD5] px-4 py-2.5 shadow-sm">
+            <svg class="h-5 w-5 text-fire-red shrink-0" fill="currentColor" viewBox="0 0 20 20" aria-hidden="true">
+              <path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zm1 11H9v-2h2v2zm0-4H9V5h2v4z" clip-rule="evenodd" />
+            </svg>
+            <span class="font-semibold">Precios claros y combos con bebida</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Columna derecha: Tarjetas de propuesta dual -->
+      <div class="lg:col-span-5 space-y-6">
+        <div class="group rounded-3xl bg-white border border-[#E2DDD5] p-6 sm:p-8 hover:border-fire-red/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 shadow-md">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-fire-red bg-fire-red/10 px-3 py-1 rounded-full border border-fire-red/25">
+              Modalidad 01
+            </span>
+            <span class="text-sm font-semibold text-[#8F5B1E]">Comer en el momento</span>
+          </div>
+          <h3 class="font-display text-2xl uppercase text-[#161412] mt-4 group-hover:text-fire-red transition-colors">
+            Recién Salidas del Horno
+          </h3>
+          <p class="text-sm text-[#5C554E] mt-2 leading-relaxed">
+            Pizzas al corte o enteras listas para calmar el antojo al instante. Cada combo incluye gaseosa fría para resolver tu almuerzo o cena en minutos.
+          </p>
+        </div>
+
+        <div class="group rounded-3xl bg-white border border-[#E2DDD5] p-6 sm:p-8 hover:border-[#D97706]/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300 shadow-md">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold uppercase tracking-wider text-[#92400E] bg-[#FEF3C7] px-3 py-1 rounded-full border border-[#FDE68A]">
+              Modalidad 02
+            </span>
+            <span class="text-sm font-semibold text-[#8F5B1E]">A tu tiempo</span>
+          </div>
+          <h3 class="font-display text-2xl uppercase text-[#161412] mt-4 group-hover:text-[#92400E] transition-colors">
+            Para Hornear en Casa
+          </h3>
+          <p class="text-sm text-[#5C554E] mt-2 leading-relaxed">
+            Pizzas preparadas con ingredientes de primera para que las lleves a tu casa. Aprovechá las promociones por 3 unidades para abastecer tu freezer.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

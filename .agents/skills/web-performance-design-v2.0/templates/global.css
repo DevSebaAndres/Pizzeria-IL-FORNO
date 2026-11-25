@@ -1,0 +1,118 @@
+/* src/styles/global.css — v2.0
+ * Tailwind v4 + tokens de diseño (sobrescribir desde DESIGN.md si hay diseño aprobado) +
+ * fuentes WOFF2 autoalojadas + estados de movimiento seguros bajo `html.js-motion`.
+ */
+@import "tailwindcss";
+
+@theme {
+  /* Roles base (reemplazar con los tokens del DESIGN.md o paleta aprobada) */
+  --color-primary:          #1B2A41; /* TODO confirmar o adaptar al proyecto */
+  --color-secondary:        #3F7A5A;
+  --color-accent:           #D9A02B;
+  --color-bg:               #FBF6EA;
+  --color-surface:          #F4EAD5;
+  --color-ink:              #1F1B0F;
+  --color-muted:            #5C6678;
+
+  /* Ambiente Showroom oscuro (opcional, para escenas o configurador) */
+  --color-showroom-bg:      #0E0F11;
+  --color-showroom-surface: #1A1C1F;
+  --color-showroom-ink:     #F5F3EC;
+
+  /* Máximo 2 familias descargadas + pila monoespaciada del sistema */
+  --font-display: "Display Font", ui-sans-serif, system-ui, sans-serif;
+  --font-sans:    "Body Font", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono:    ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* Radios (ajustar según DESIGN.md: p. ej. 2px/6px/12px en estética técnica, o 2rem en editorial) */
+  --radius-sm:   0.125rem;
+  --radius-card: 0.375rem;
+  --radius-hero: 0.75rem;
+}
+
+/* Fuentes autoalojadas en /public/fonts/ (WOFF2 subset latin). Reemplazar nombres y rutas reales. */
+@font-face {
+  font-family: "Display Font";
+  src: url("/fonts/TODO-display-latin.woff2") format("woff2");
+  font-weight: 600 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Body Font";
+  src: url("/fonts/TODO-body-latin.woff2") format("woff2");
+  font-weight: 400 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Body Font Fallback";
+  src: local("Arial");
+  size-adjust: 100%;          /* TODO ajustar para evitar CLS */
+  ascent-override: 95%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+}
+
+@layer base {
+  html { scrollbar-gutter: stable; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans), "Body Font Fallback";
+    overflow-x: clip; /* clip no rompe position: sticky (a diferencia de hidden) */
+  }
+  h1, h2, h3 { font-family: var(--font-display); text-wrap: balance; }
+  p { text-wrap: pretty; }
+  :focus-visible { outline: 2px solid var(--color-accent); outline-offset: 3px; }
+
+  .skip-link {
+    position: absolute; left: 1rem; top: -4rem; z-index: 100;
+    background: var(--color-ink); color: var(--color-bg);
+    padding: 0.75rem 1rem; border-radius: var(--radius-card);
+  }
+  .skip-link:focus-visible { top: 1rem; }
+}
+
+/*
+ * Contrato de movimiento v2:
+ * - Sin `html.js-motion`, NINGÚN elemento queda oculto y las escenas muestran su versión estática (.seq-stills).
+ * - Con `html.js-motion`, se habilita el pin de las secuencias y los estados iniciales de M1/M2.
+ * - PROHIBIDO aplicar [data-gsap-init] o .fade-up al H1 o a la imagen LCP.
+ */
+html:not(.js-motion) .seq-pin canvas { display: none; }
+html:not(.js-motion) .seq { min-height: auto !important; }
+html.js-motion .seq-stills { display: none; }
+html.js-motion .seq-pin canvas { opacity: 0; transition: opacity 0.25s ease-out; }
+html.js-motion .seq.is-ready .seq-pin canvas { opacity: 1; }
+html.js-motion [data-gsap-init="hidden"] { opacity: 0; transform: translateY(1.25rem); }
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(1.25rem); }
+    to   { opacity: 1; transform: none; }
+  }
+  .fade-up {
+    animation: fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--i, 0) * 110ms);
+  }
+
+  @supports (animation-timeline: view()) {
+    @keyframes reveal {
+      from { opacity: 0; transform: translateY(1.5rem); }
+      to   { opacity: 1; transform: none; }
+    }
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 55%;
+    }
+  }
+}
+
+/* HUD flotante estático: backdrop-filter solo en placas pequeñas y nunca animado */
+.hud-plate {
+  background: color-mix(in srgb, var(--color-showroom-surface) 75%, transparent);
+  backdrop-filter: blur(10px);
+}
+

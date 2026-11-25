@@ -1,0 +1,25 @@
+---
+// src/components/FAQ.astro — FAQ visible 1:1 con el FAQPage del JSON-LD (misma fuente: faqs).
+// La respuesta (<p>) debe ser IDÉNTICA al acceptedAnswer.text del JSON-LD: ambos salen de faqs[].a.
+// asHeading=true: la pregunta va en <h3> dentro de <summary> (válido en HTML; entra al árbol de headings
+// que usan los motores para armar pasajes). Si la auditoría de accesibilidad con lector de pantalla lo
+// penaliza en el proyecto, pasar asHeading={false}.
+import { faqs } from '../data/business';
+const { heading = 'Preguntas frecuentes', asHeading = true } = Astro.props;
+---
+<section aria-labelledby="faq-title" class="faq">
+  <h2 id="faq-title">{heading}</h2>
+  {faqs.map((f) => (
+    <details name="faq">
+      <summary>{asHeading ? <h3>{f.q}</h3> : f.q}</summary>
+      <p>{f.a}</p>
+    </details>
+  ))}
+</section>
+<style>
+  .faq details { border-bottom: 1px solid color-mix(in srgb, currentColor 15%, transparent); padding-block: 1rem; }
+  .faq summary { cursor: pointer; font-weight: 600; list-style: none; }
+  .faq summary::-webkit-details-marker { display: none; }
+  .faq summary h3 { display: inline; font: inherit; margin: 0; }
+  .faq p { margin-top: .75rem; max-width: 65ch; }
+</style>

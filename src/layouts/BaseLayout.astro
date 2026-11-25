@@ -1,0 +1,66 @@
+---
+// src/layouts/BaseLayout.astro
+import '../styles/global.css';
+import { business } from '../data/business';
+import { buildGraph } from '../lib/schema';
+
+interface Props {
+  title?: string;
+  description?: string;
+  path?: string;
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = `${business.name} | ${business.tagline}`,
+  description = business.description,
+  path = '/',
+  ogImage = business.ogImage,
+  noindex = false,
+} = Astro.props;
+
+const canonical = new URL(path, business.url).href;
+const ld = JSON.stringify({
+  '@context': 'https://schema.org',
+  '@graph': buildGraph({ path, pageName: title, pageDescription: description }),
+}).replace(/</g, '\\u003c');
+---
+<!doctype html>
+<html lang={business.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex" />}
+    <meta name="theme-color" content="#141110" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(ogImage, business.url).href} />
+    <meta property="og:locale" content={business.locale} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={new URL(ogImage, business.url).href} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <script type="application/ld+json" set:html={ld} />
+    <slot name="head" />
+  </head>
+  <body class="bg-coal text-cream antialiased selection:bg-fire-orange selection:text-coal">
+    <a
+      class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-fire-orange focus:px-4 focus:py-2 focus:font-semibold focus:text-coal focus:outline-none"
+      href="#main"
+    >
+      Saltar al contenido principal
+    </a>
+    <slot />
+  </body>
+</html>

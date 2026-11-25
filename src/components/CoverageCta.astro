@@ -1,0 +1,53 @@
+---
+// src/components/CoverageCta.astro — Pasos 5 y 6 del arco narrativo (Cobertura geográfica y Conversión intermedia)
+import { business, waLink } from '../data/business';
+const wa = waLink('Hola IL FORNO, quiero consultar por retiro en el local');
+---
+<section id="cobertura" aria-labelledby="cobertura-heading" class="relative bg-[#F2EEE9] py-20 lg:py-28 text-[#161412] border-t border-[#E2DDD5]">
+  <div class="mx-auto max-w-[1280px] px-6 lg:px-12">
+    <div class="rounded-3xl bg-white border border-[#E2DDD5] p-8 sm:p-12 lg:p-16 relative overflow-hidden shadow-xl">
+      <!-- Decoración de fondo tenue -->
+      <div class="absolute -right-24 -bottom-24 h-96 w-96 rounded-full bg-fire-red/[0.04] blur-3xl pointer-events-none" aria-hidden="true"></div>
+
+      <div class="relative z-10 max-w-3xl">
+        <span class="inline-block rounded-full bg-fire-red/10 border border-fire-red/25 px-3.5 py-1 text-xs font-bold uppercase tracking-wider text-fire-red">
+          Cobertura local
+        </span>
+        <h2 id="cobertura-heading" class="font-display text-3xl sm:text-4xl lg:text-5xl uppercase tracking-wide text-[#161412] mt-4 leading-tight">
+          Atención y Retiro en San Miguel de Tucumán
+        </h2>
+        <p class="mt-5 text-base sm:text-lg text-[#5C554E] leading-relaxed">
+          Atendemos a vecinos, familias y grupos de toda la ciudad que buscan una pizza con sabor a horno auténtico. Nuestro local de <strong class="text-[#161412]">{business.address.street}</strong> (esquina Lavalle) está pensado para que pases, retires tu pedido recién horneado o tus pizzas para el freezer, y sigas tu camino sin demoras.
+        </p>
+
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+          <div class="rounded-2xl bg-[#F8F6F2] border border-[#E8E3DB] p-5 shadow-sm">
+            <span class="text-xs font-bold uppercase text-fire-red block">Zona de atención</span>
+            <span class="font-semibold text-[#161412] text-base mt-1 block">San Miguel de Tucumán</span>
+            <span class="text-xs text-[#5C554E] mt-0.5 block">Retiro directo en mostrador</span>
+          </div>
+          <div class="rounded-2xl bg-[#F8F6F2] border border-[#E8E3DB] p-5 shadow-sm">
+            <span class="text-xs font-bold uppercase text-fire-red block">Contacto directo</span>
+            <span class="font-semibold text-[#161412] text-base mt-1 block">WhatsApp: {business.whatsappDisplay}</span>
+            <span class="text-xs text-[#5C554E] mt-0.5 block">Llamadas: {business.phoneDisplay}</span>
+          </div>
+        </div>
+
+        <div class="mt-10 flex flex-wrap items-center gap-4">
+          <a
+            href={wa}
+            class="inline-flex h-[55px] items-center justify-center rounded-full bg-fire-red px-8 text-base font-bold uppercase tracking-wider text-white shadow-lg shadow-fire-red/25 transition-all hover:bg-[#8F1D1D] hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fire-red"
+          >
+            Hacé tu pedido por WhatsApp
+          </a>
+          <a
+            href={business.phoneTel}
+            class="inline-flex h-[55px] items-center justify-center rounded-full border-2 border-[#D8D2C8] bg-white px-8 text-base font-bold uppercase tracking-wider text-[#161412] transition-colors hover:border-fire-red hover:text-fire-red focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-fire-red"
+          >
+            Llamar al {business.phoneDisplay}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
