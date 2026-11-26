@@ -166,29 +166,8 @@ const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(busines
           </div>
         </div>
 
-        <!-- Banner de retiro rápido al paso -->
-        <div class="group relative overflow-hidden rounded-3xl bg-white border border-[#E2DDD5] hover:border-fire-red/50 p-6 flex flex-col sm:flex-row items-center justify-between gap-4 shadow-md hover:shadow-xl transition-all duration-300">
-          <!-- Glow top-border shimmer -->
-          <div class="pointer-events-none absolute inset-x-0 -top-px h-1 bg-gradient-to-r from-transparent via-fire-red/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" aria-hidden="true"></div>
-
-          <div class="relative z-10 flex items-center gap-4">
-            <div class="h-10 w-10 shrink-0 rounded-full bg-fire-red/10 border border-fire-red/25 flex items-center justify-center text-fire-red group-hover:scale-110 transition-all duration-300">
-              <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-              </svg>
-            </div>
-            <div>
-              <span class="font-bold text-[#161412] block text-sm sm:text-base">¿Estás cerca de calle San Luis y Lavalle?</span>
-              <span class="text-[#5C554E] text-xs mt-0.5 block">Avisanos por WhatsApp y te dejamos la caja caliente lista en mostrador.</span>
-            </div>
-          </div>
-          <a
-            href={waRetiro}
-            class="relative z-10 inline-flex h-[46px] shrink-0 items-center justify-center rounded-full bg-fire-red px-6 text-xs sm:text-sm font-bold uppercase tracking-wider text-white shadow-md shadow-fire-red/20 hover:bg-[#8F1D1D] hover:scale-[1.03] active:scale-[0.98] transition-all whitespace-nowrap"
-          >
-            Avisar que paso
-          </a>
-        </div>
+        
+        
       </div>
 
       <!-- Columna 2: Card "Mapa y Orientación" con mapa interactivo embebido -->
@@ -225,22 +204,7 @@ const mapEmbedUrl = `https://maps.google.com/maps?q=${encodeURIComponent(busines
           </div>
 
           <!-- Puntos de referencia y orientación rápida -->
-          <div class="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-            <div class="rounded-xl bg-[#F8F6F2] border border-[#E8E3DB] hover:border-fire-red/40 hover:bg-white p-3.5 flex items-start gap-2.5 transition-all duration-300 shadow-sm">
-              <span class="text-fire-red text-base mt-0.5" aria-hidden="true">📍</span>
-              <div>
-                <strong class="text-[#161412] block">Punto de retiro:</strong>
-                <span class="text-[#5C554E]">Fácil estacionamiento momentáneo en la esquina.</span>
-              </div>
-            </div>
-            <div class="rounded-xl bg-[#F8F6F2] border border-[#E8E3DB] hover:border-fire-red/40 hover:bg-white p-3.5 flex items-start gap-2.5 transition-all duration-300 shadow-sm">
-              <span class="text-fire-red text-base mt-0.5" aria-hidden="true">📞</span>
-              <div>
-                <strong class="text-[#161412] block">Llamanos al llegar:</strong>
-                <span class="text-[#5C554E]">{business.phoneDisplay} para tener tu pedido en mano.</span>
-              </div>
-            </div>
-          </div>
+          
         </div>
 
         <!-- Botones de acción en Google Maps -->

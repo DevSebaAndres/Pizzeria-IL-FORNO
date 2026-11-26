@@ -6,6 +6,20 @@ import { business, money, waLink } from '../data/business';
 const { fresh, bake } = business.menu;
 ---
 <section id="menu" aria-labelledby="menu-heading" class="relative bg-[#F2EEE9] py-20 lg:py-28 text-[#161412] border-t border-[#E2DDD5] overflow-hidden">
+  <!-- Fondo: horno de leña a su proporción natural (sin ampliar), anclado arriba y fundido hacia abajo.
+       Velo claro suave + viñeta leve: se ve la foto sin perder legibilidad de la carta. -->
+  <span class="pointer-events-none select-none absolute inset-x-0 top-0 block [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_55%,transparent)]" aria-hidden="true">
+    <img
+      src={`${import.meta.env.BASE_URL.replace(/\/$/, "")}/imagen-horno.webp`}
+      alt=""
+      width="1376"
+      height="768"
+      loading="lazy"
+      decoding="async"
+      class="block w-full h-auto min-h-[380px] object-cover object-center"
+    />
+    <span class="absolute inset-0 block bg-[#F2EEE9]/55 [background-image:radial-gradient(ellipse_at_center,transparent_40%,rgba(22,20,18,0.18)_100%)]"></span>
+  </span>
   
   <!-- Cenefa lateral izquierda decorativa (Doble columna de puntos y porciones de pizza fiel a Figma) -->
   <div class="hidden md:flex flex-col justify-between items-center absolute left-2 sm:left-4 xl:left-8 top-16 bottom-16 w-8 text-fire-red select-none pointer-events-none z-10" aria-hidden="true">
@@ -76,9 +90,7 @@ const { fresh, bake } = business.menu;
       <h2 id="menu-heading" class="font-display text-3xl sm:text-4xl lg:text-5xl uppercase tracking-wide text-[#161412] mt-2">
         Nuestra Carta y Promociones
       </h2>
-      <p class="mt-4 text-base sm:text-lg text-[#5C554E]">
-        Elegí tus pizzas listas para consumir al paso o para hornear en casa cuando quieras. Hacé tu pedido por teléfono o WhatsApp para tenerlo listo al llegar.
-      </p>
+
     </div>
 
     <!-- Grilla de las 2 categorías principales en cards congruentes con el fondo #F2EEE9 -->

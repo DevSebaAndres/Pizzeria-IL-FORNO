@@ -38,3 +38,25 @@
 
 html { background: var(--color-coal); color: var(--color-cream); font-family: var(--font-sans); }
 
+
+/* ── Scroll reveal (CSS puro, cero JS) ─────────────────────────────
+   Cada bloque aparece (fade + subida) al entrar al viewport.
+   - Se aplica a encabezados/bloques de cada sección y a sus cards.
+   - Sin soporte de animation-timeline o con reduced-motion: todo visible. */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(36px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    main > section > div > *,
+    main section .grid > *,
+    main section ul.reveal-list > *,
+    footer > div > * {
+      animation: reveal-up linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 45%;
+    }
+  }
+}
