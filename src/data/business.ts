@@ -18,9 +18,9 @@ export const business = {
   phone: '+543816362922',
   phoneDisplay: '381 6362922',
   phoneTel: 'tel:+543816362922',
-  // PLACEHOLDER_ número ficticio de WhatsApp pedido por el cliente
-  whatsapp: '543815550123',
-  whatsappDisplay: '381 5550123',
+  // Número real de WhatsApp (mismo que el teléfono)
+  whatsapp: '543816362922',
+  whatsappDisplay: '381 6362922',
   whatsappText: 'Hola IL FORNO, quiero hacer un pedido.',
   email: 'contacto@ilfornopizzeria.com.ar',
   address: {
@@ -35,10 +35,10 @@ export const business = {
   mapsUrl: 'https://maps.google.com/?q=San+Luis+601,+San+Miguel+de+Tucum%C3%A1n,+Argentina',
   // PLACEHOLDER_ Instagram de modelo
   instagram: {
-    handle: '@ilforno.pizzeria',
-    href: 'https://instagram.com/ilforno.pizzeria',
+    handle: '@ilfornopizzatuc',
+    href: 'https://www.instagram.com/ilfornopizzatuc/',
   },
-  sameAs: ['https://instagram.com/ilforno.pizzeria'],
+  sameAs: ['https://www.instagram.com/ilfornopizzatuc/'],
   priceRange: '$$',
   // PLACEHOLDER_ horario genérico modelo
   hours: [
@@ -165,7 +165,7 @@ export const faqs: { q: string; a: string }[] = [
   },
   {
     q: '¿Cómo hago un pedido en IL FORNO?',
-    a: 'Podés pedir en IL FORNO llamando al 381 6362922 o escribiendo por WhatsApp al 381 5550123. También podés acercarte al local de San Luis 601, esquina Lavalle, en San Miguel de Tucumán.',
+    a: 'Podés pedir en IL FORNO llamando al 381 6362922 o escribiendo por WhatsApp al 381 6362922. También podés acercarte al local de San Luis 601, esquina Lavalle, en San Miguel de Tucumán.',
   },
   {
     q: '¿Cuál es el horario de atención de IL FORNO?',

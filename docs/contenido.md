@@ -32,7 +32,7 @@ Va visible justo debajo del H1.
 | 7 | **Cómo funciona** (`<ol>`) | 1. Elegí tu combo o tu pizza. 2. Pedí por teléfono o WhatsApp. 3. Pasá por San Luis 601, esq. Lavalle. *(asumimos retiro en el local → confirmar)* |
 | 8 | **Por qué elegirnos** | Lista con datos verificables: dos modalidades en un mismo lugar · combos con gaseosa incluida · precios publicados en la carta. Sin comparaciones ni superlativos. |
 | 9 | **FAQ** | Ver §5 (6 preguntas). |
-| 10 | **Confianza y NAP** | IL FORNO · San Luis 601, esq. Lavalle, San Miguel de Tucumán · 381 6362922 · WhatsApp 381 5550123 *(PLACEHOLDER_)* · Horario *(PLACEHOLDER_)* · Instagram @ilforno.pizzeria *(PLACEHOLDER_)* · Maps **TODO_**. |
+| 10 | **Confianza y NAP** | IL FORNO · San Luis 601, esq. Lavalle, San Miguel de Tucumán · 381 6362922 · WhatsApp 381 6362922 · Horario *(PLACEHOLDER_)* · Instagram @ilforno.pizzeria *(PLACEHOLDER_)* · Maps **TODO_**. |
 | 11 | **Cierre** | «Hoy puede ser noche de pizza. Pedí por WhatsApp o pasá por IL FORNO.» (sin urgencia falsa) + botón WhatsApp. |
 
 ### Carta (REAL, flyer)
@@ -50,7 +50,7 @@ Va visible justo debajo del H1.
 2. **¿Cuánto cuesta una pizza para hornear en casa en IL FORNO?** En IL FORNO la pizza común para hornear en casa cuesta $7.500 y la especial $9.000. La promo por tres comunes cuesta $21.000 y la de tres especiales $25.000, según la carta vigente.
 3. **¿Qué combos de pizza recién hecha ofrece IL FORNO?** IL FORNO ofrece tres combos: 2 porciones de pizza con gaseosa de 500 cc por $5.000, 1 pizza con gaseosa grande por $19.000 y 2 pizzas con gaseosa grande por $34.000.
 4. **¿Dónde queda IL FORNO?** IL FORNO queda en San Luis 601, esquina Lavalle, en San Miguel de Tucumán. Podés visitarnos en el local o hacer tu pedido antes por teléfono o WhatsApp.
-5. **¿Cómo hago un pedido en IL FORNO?** Podés pedir en IL FORNO llamando al 381 6362922 o escribiendo por WhatsApp al 381 5550123. También podés acercarte al local de San Luis 601, esquina Lavalle, en San Miguel de Tucumán.
+5. **¿Cómo hago un pedido en IL FORNO?** Podés pedir en IL FORNO llamando al 381 6362922 o escribiendo por WhatsApp al 381 6362922. También podés acercarte al local de San Luis 601, esquina Lavalle, en San Miguel de Tucumán.
 6. **¿Cuál es el horario de atención de IL FORNO?** IL FORNO atiende de martes a domingo de 20:00 a 00:00 hs en San Luis 601, esquina Lavalle, San Miguel de Tucumán. Los lunes permanece cerrado. *Horario de ejemplo, a confirmar por el local.*
 
 > Las respuestas 5 y 6 dependen de datos PLACEHOLDER_ (WhatsApp y horario). La 6 lleva una aclaración visible que debe quitarse cuando se confirme el horario real.
@@ -62,7 +62,7 @@ Va visible justo debajo del H1.
 - **Delivery y zonas de reparto:** **TODO_** (se omite del copy).
 - **Vigencia de precios** (fecha del flyer): **TODO_**.
 - **Dominio, coordenadas, enlace a Google Maps, año de inicio, calificaciones, email, código postal:** **TODO_**.
-- **PLACEHOLDER_ a reemplazar antes de publicar:** WhatsApp `381 5550123`, horario martes–domingo 20:00–00:00, Instagram `@ilforno.pizzeria`.
+- **PLACEHOLDER_ a reemplazar antes de publicar:** horario martes–domingo 20:00–00:00, Instagram `@ilforno.pizzeria`.
 - Sin `aggregateRating` ni reseñas propias (regla de la skill).
 
 ## 6. Cambios aplicados en archivos
